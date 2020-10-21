@@ -1,6 +1,9 @@
 package com.company;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +19,53 @@ public class Main {
 
         //LessonDataTypes();
 
-        LessonStrings();
+        //LessonStrings();
+
+        LessonList();
+    }
+
+    private static void LessonList() {
+        // collections / lists
+        List<String> myStringCollection = new ArrayList<String>();
+
+        myStringCollection.add("Str 1");
+        myStringCollection.add("Str 2");
+        myStringCollection.add("Str 3");
+        myStringCollection.add("Str 4");
+        myStringCollection.add("Str 5");
+
+        System.out.println(myStringCollection);
+
+        //loop over string collection
+        for(String oneStr : myStringCollection) {
+            System.out.println(oneStr);
+        }
+
+        List<Integer> myIntCollection = new ArrayList<Integer>();
+        myIntCollection.add(10);
+        myIntCollection.add(20);
+        myIntCollection.add(30);
+        myIntCollection.add(40);
+        myIntCollection.add(50);
+        System.out.println(myIntCollection);
+        for(int oneNum : myIntCollection) {
+            System.out.println(oneNum);
+        }
+
+        // Array
+        //if you say an array of 5 that is all you can have in your list
+        //if you go over it will be out bounce
+        String[] myStringArray = new String[5];
+        myStringArray[0] = "1st";
+        myStringArray[1] = "2nd";
+        myStringArray[2] = "3rd";
+        myStringArray[3] = "4th";
+        myStringArray[4] = "5th";
+
+        System.out.println(myStringArray);
+        for(String oneStr : myStringArray) {
+            System.out.println(oneStr);
+        }
     }
 
     private static void LessonStrings() {
