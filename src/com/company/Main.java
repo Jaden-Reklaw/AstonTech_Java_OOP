@@ -25,7 +25,60 @@ public class Main {
 
         //LessonFundamentals();
 
-        LessonOperators();
+        //LessonOperators();
+
+        //LessonFlowControl();
+    }
+
+    private static void LessonFlowControl() {
+        //IF ElSE
+        String name = "Bob";
+        if(name == "Bob") {
+            System.out.println("Hello Bob!");
+        } else {
+            System.out.println("You are not Bob!");
+        }
+
+        //on strings use equals function
+        if(name.equals("Bob")){
+            System.out.println("Hello Bob!");
+        } else {
+            System.out.println("You are not Bob!");
+        }
+
+        //nested ifs
+        if(name.equals("Bob")){
+            System.out.println("Hello Bob!");
+            if(name.length() > 2) {
+                System.out.println("Your name is longer then 2 letters");
+            } else {
+                System.out.println("Your name is not longer then 2 letters");
+            }
+        } else {
+            System.out.println("You are not Bob!");
+        }
+
+        //else if
+        int time = 22;
+        if (time < 10) {
+            System.out.println("Good morning.");
+        } else if (time < 20) {
+            System.out.println("Good day.");
+        } else {
+            System.out.println("Good evening.");
+        }
+
+        int day = 4;
+        switch (day) {
+            case 1 -> System.out.println("Monday");
+            case 2 -> System.out.println("Tuesday");
+            case 3 -> System.out.println("Wednesday");
+            case 4 -> System.out.println("Thursday");
+            case 5 -> System.out.println("Friday");
+            case 6 -> System.out.println("Saturday");
+            case 7 -> System.out.println("Sunday");
+            default -> System.out.println("Not a day!");
+        }
     }
 
     private static void LessonOperators() {
