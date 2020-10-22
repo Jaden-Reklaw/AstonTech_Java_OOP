@@ -30,12 +30,107 @@ public class Main {
 
         //LessonFlowControl();
 
-        try{
-            LessonExecptions();
-        } catch (Exception err) {
-            System.out.println("My Error "+ err);
+//        try{
+//            LessonExecptions();
+//        } catch (Exception err) {
+//            System.out.println("My Error "+ err);
+//        }
+
+        LessonFizzBuzzLab();
+        //LessonCalculatorLab();
+
+    }
+
+    //Create another seperate method (LessonCalculatorLAB)
+    private static void LessonCalculatorLab() {
+        //Write code that prompts the user to enter a number from 0-9 and then reads the users input.
+        // Create a Scanner object
+        Scanner reader = new Scanner(System.in);
+        // Prompt User and get num1 input
+        System.out.print("Enter a number from 0-9: ");
+        int num1 = reader.nextInt();
+
+        //If the user enters anything other than a number from 0-9, print "INVALID" to the console and reprommpt.
+        while(num1 < 0 || num1 > 9) {
+            System.out.println("INVALID");
+            System.out.print("Enter a number from 0-9: ");
+            num1 = reader.nextInt();
         }
 
+        //Prompt the user for a second number, with the same check.
+        //Second Number
+        System.out.print("Enter another number from 0-9: ");
+        int num2 = reader.nextInt();
+        reader.nextLine(); //fix issue with not consuming next line after nextInts
+
+        //If the user enters anything other than a number from 0-9, print "INVALID" to the console and reprommpt.
+        while(num2 < 0 || num2 > 9) {
+            System.out.println("INVALID");
+            System.out.print("Enter another number from 0-9: ");
+            num2 = reader.nextInt();
+            reader.nextLine();
+        }
+
+        //Operator
+        //Prompt the user to choose an operator (+, -, /, *) and accept input.
+        //If the user enters anything other than one of the four operators, print "INVALID" to the console and reprompt.
+        System.out.print("Choose an Operator +, -, /, * ");
+        String operator = reader.nextLine();
+
+        while(!operator.equals("-") && !operator.equals("+") && !operator.equals("*") && !operator.equals("/")) {
+            System.out.println("INVALID");
+            System.out.print("Choose an Operator +, -, /, * ");
+            operator = reader.nextLine();
+        }
+//        boolean flag = true;
+//
+//        do {
+//            if(operator.equals("-")  || operator.equals("+") || operator.equals("*") || operator.equals("/")) {
+//                flag = false;
+//            } else {
+//                System.out.println("INVALID");
+//                System.out.print("Choose an Operator +, -, /, * ");
+//                operator = reader.nextLine();
+//            }
+//        } while (flag);
+
+        //Using a switch/case perform the selected operation on the two entered numbers and output the result to the console.
+        switch (operator) {
+            case "-" -> System.out.println(num1 - num2);
+            case "+"-> System.out.println(num1 + num2);
+            case "*"-> System.out.println(num1 * num2);
+            case "/" -> System.out.println(num1/num2);
+            default -> System.out.println("This will never happen");
+        }
+    }
+
+    //Create a separate method (LessonFizzBuzzLAB)
+    private static void LessonFizzBuzzLab() {
+        //Write a loop that counts from 0-100
+            for(int index=0; index <= 100; index++) {
+                //If the value is divisible by 15 print "FizzBuzz"
+                if(index%3 == 0 && index%5 == 0) {
+                    //If the value is divisible by 3 print "Fizz"
+                    System.out.println("FizzBuzz");
+                } else if(index%3 == 0) {
+                    System.out.println("Fizz");
+                    //If the value is divisible by 5 print "Buzz"
+                } else if(index%5 == 0) {
+                    System.out.println("Buzz");
+                    //If the value is not divisible by 3,5, or 15 simply print the number
+                } else {
+                    System.out.println(index);
+                }
+            }
+            //Write code that will throw an exception (other than the ones we covered in the lesson) and catch it.
+            String[] myStrArray = new String[2];
+            myStrArray[0] = "Hello";
+            myStrArray[1] = "Hello";
+            try {
+                System.out.println(myStrArray[2]);
+            } catch(ArrayIndexOutOfBoundsException error){
+                System.out.println(error);
+            }
     }
 
     private static void LessonExecptions() throws Exception {
@@ -87,7 +182,6 @@ public class Main {
             throw new Exception("A custom error message for Exception from Lesson Method", err);
         }
     }
-
 
     private static void LessonFlowControl() {
         //IF ElSE
