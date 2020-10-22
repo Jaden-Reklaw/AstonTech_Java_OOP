@@ -21,7 +21,150 @@ public class Main {
 
         //LessonStrings();
 
-        LessonList();
+        //LessonList();
+
+        //LessonFundamentals();
+
+        LessonOperators();
+    }
+
+    private static void LessonOperators() {
+        //plus and minus
+        int num1 = 10;
+        System.out.println(num1 + 10);
+        System.out.println(num1 - 10);
+
+        // module or remainder
+        int num2 = 3;
+        System.out.println(10%num2);
+
+        // increment ++ and decrement --
+        //inc and dec after
+        int num3 = 0;
+        System.out.println("inc after");
+        System.out.println(num3++); //0
+        System.out.println(num3++); //1
+        System.out.println(num3++); //2
+        System.out.println(num3);  //3
+        System.out.println("dec after");
+        System.out.println(num3--); //3
+        System.out.println(num3--); //2
+        System.out.println(num3--); //1
+        System.out.println(num3);  //0
+        //inc and dec before
+        System.out.println("inc before");
+        System.out.println(++num3); //1
+        System.out.println(++num3); //2
+        System.out.println(++num3); //3
+        System.out.println(num3);  //3
+        System.out.println("dec before");
+        System.out.println(--num3); //2
+        System.out.println(--num3); //1
+        System.out.println(--num3); //0
+        System.out.println(num3);  //0
+
+        //equal and not equal
+        int num4 = 10;
+        if(num4 == 10) {
+            System.out.println("Num4 is equal to 10.");
+        } else {
+            System.out.println("Num4 is not equal to 10");
+        }
+        if(num4 != 10) {
+            System.out.println("Num4 is not equal to 10.");
+        } else {
+            System.out.println("Num4 is equal to 10");
+        }
+
+        //and or statements
+        int num5 = 13;
+        String name = "Bill";
+
+        if(num5 == 13 && name == "Bill") {
+            System.out.println("Num3 is 13 and name is Bill!");
+        } else {
+            System.out.println("Either num5 is not 13 or name is not Bill!");
+        }
+
+        num5 = 3;
+        if(num5 == 13 && name == "Bill" || num5 == 3) {
+            System.out.println("Num3 is 13 and name is Bill!");
+        } else {
+            System.out.println("Either num5 is not 13 or name is not Bill!");
+        }
+
+        //negation !
+        boolean answer = true;
+        if(!answer){
+            System.out.println("The answer is true!");
+        } else {
+            System.out.println("The answer is false!");
+        }
+
+    }
+
+    private static void LessonFundamentals() {
+        //#2
+//        Scanner reader = new Scanner(System.in);
+//        System.out.print("Enter a number from 1 to 10: ");
+//        String input = reader.nextLine();
+//        System.out.println(Integer.parseInt(input) + 1.75);
+
+        //#3
+        byte myNum1 = 100;
+        System.out.println(myNum1);
+        short myNum2 = 5000;
+        System.out.println(myNum2);
+        int myNum3 = 100000;
+        System.out.println(myNum3);
+        long myNum4 = 15000000000L;
+        System.out.println(myNum4);
+        float myNum5 = 5.75f;
+        System.out.println(myNum5);
+        double myNum6 = 19.99d;
+        System.out.println(myNum6);
+        boolean isJavaFun = true;
+        boolean isFishTasty = false;
+        System.out.println(isJavaFun);
+        System.out.println(isFishTasty);
+        char myGrade = 'B';
+        System.out.println(myGrade);
+        String greeting = "Hello World";
+        System.out.println(greeting);
+
+        //#4
+        //Strings are non-primitive data types that are objects
+        //Strings can be empty or null while primitive type can not
+        //int a = null;
+        String b = null;
+
+        //#5
+        List<String> stringList = new ArrayList<String>();
+        stringList.add("Hello");
+        stringList.add("World");
+        stringList.add("Let's do this");
+
+        for(String oneStr : stringList) {
+            System.out.println(oneStr);
+        }
+
+        //List can't have primitive types like int, char, double etc
+        //List(int) characters = new ArrayList<int>()
+
+        //#6
+        //Lottery Variables
+        String gameName = "Powerball";
+        double jackpot = 20000000.00d;
+        String drawingDate = "1/2/2013";
+        List<String> winningNumbers = new ArrayList<String>();
+        winningNumbers.add("3");
+        winningNumbers.add("7");
+        winningNumbers.add("13");
+        winningNumbers.add("25");
+        winningNumbers.add("47");
+        winningNumbers.add("13LB");
+        winningNumbers.add("5x");
+
     }
 
     private static void LessonList() {
@@ -162,6 +305,5 @@ public class Main {
         String input = reader.nextLine();
         //print the value back to the screen
         System.out.println("Hello " + input);
-
     }
 }
