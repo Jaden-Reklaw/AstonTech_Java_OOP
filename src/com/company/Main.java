@@ -1,5 +1,6 @@
 package com.company;
 
+import java.security.spec.ECField;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +29,65 @@ public class Main {
         //LessonOperators();
 
         //LessonFlowControl();
+
+        try{
+            LessonExecptions();
+        } catch (Exception err) {
+            System.out.println("My Error "+ err);
+        }
+
     }
+
+    private static void LessonExecptions() throws Exception {
+        // Simple unhandled exception
+//        String firstName = "Jordan";
+//        int x = Integer.parseInt(firstName);
+//
+//        System.out.println("Integer value: ");
+//        System.out.println(x);
+
+        // try catch block
+//        String firstName = "Jordan";
+//        try {
+//            int x = Integer.parseInt(firstName);
+//            System.out.println("Integer value: ");
+//            System.out.println(x);
+//        } catch(NumberFormatException err) {
+//            System.out.println("Error is: " + err);
+//        }
+
+        // multiple exceptions and finally
+        //order of the catch matters
+//        String firstName = "Hello";
+//        try {
+//            int x = Integer.parseInt(firstName);
+//            System.out.println("Integer value: ");
+//            System.out.println(x);
+//        } catch (NumberFormatException err) {
+//            System.out.println("Error is: " + err.toString());
+//        } catch (IllegalArgumentException err) {
+//            System.out.println("Illegal Arg Error is: " + err.toString());
+//        } catch(NullPointerException err) {
+//            System.out.println("Null Pointer Error is: " + err.toString())
+//        } catch (Exception err) {
+//            System.out.println("Generic Error is: " + err.toString());
+//        } finally {
+//            System.out.println("Runs no matter what the exception is!");
+//        }
+
+        //If you create an exception it handles it all the way up to main so the method needs to throw an
+        //main method for LessonException needs to be in a try catch block
+
+        String firstName = null;
+        try {
+            int x = Integer.parseInt(firstName);
+            System.out.println("Integer value: ");
+            System.out.println(x);
+        } catch(Exception err) {
+            throw new Exception("A custom error message for Exception from Lesson Method", err);
+        }
+    }
+
 
     private static void LessonFlowControl() {
         //IF ElSE
