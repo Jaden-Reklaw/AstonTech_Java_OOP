@@ -1,7 +1,8 @@
-package com.company;
+package com.astontech.console;
 
-import java.security.spec.ECField;
-import java.sql.SQLOutput;
+
+import com.astontech.bo.Test;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Test");
+        Test myTest = new Test();
+        System.out.println(myTest.Test_Method());
 	// write your code here sout
        // System.out.println("Hello World!");
 
@@ -30,13 +34,13 @@ public class Main {
 
         //LessonFlowControl();
 
-//        try{
-//            LessonExecptions();
-//        } catch (Exception err) {
-//            System.out.println("My Error "+ err);
-//        }
+        //try{
+        //    LessonExecptions();
+        //} catch (Exception err) {
+        //    System.out.println("My Error "+ err);
+        //}
 
-        LessonFizzBuzzLab();
+       // LessonFizzBuzzLab();
         //LessonCalculatorLab();
 
     }
