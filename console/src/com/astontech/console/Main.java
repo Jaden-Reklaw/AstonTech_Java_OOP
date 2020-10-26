@@ -56,7 +56,36 @@ public class Main {
 
         //LessonMethods();
 
-        LessonObjectsLab();
+        //LessonObjectsLab();
+
+        LessonCollections();
+    }
+
+    private static void LessonCollections() {
+        // List<T> - generic type 'T'
+        List<Employee> employeeList = new ArrayList<Employee>();
+
+        //Create Employees from Employee objects constructor
+        Employee emp1 = new Employee("Jordan", "Walker");
+        Employee emp2 = new Employee("Mark", "Tuttle");
+        Employee emp3 = new Employee("Wayne", "Henderson");
+
+        //Add them to employee list
+        employeeList.add(emp1);
+        employeeList.add(emp2);
+        employeeList.add(emp3);
+
+        //Create employee and add to list in one line
+        employeeList.add(new Employee("Erick", "Jensen"));
+
+        //Get info from list
+        System.out.println(employeeList.get(3).GetFullName());
+
+        //Print all full names from employee list
+        for(Employee e : employeeList) {
+            System.out.println(e.GetFullName());
+        }
+
     }
 
     private static void LessonObjectsLab() {
