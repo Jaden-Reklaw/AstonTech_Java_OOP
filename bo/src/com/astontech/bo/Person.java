@@ -62,4 +62,24 @@ public class Person extends BaseBO{
     public String getGender() {
         return this.Gender;
     }
+
+    //Custom Methods
+    //this will become an extension method
+    public static boolean isNullOrEmpty(String s) {
+        return s == null || s.length() == 0;
+    }
+
+    public String GetFullName() {
+        if(isNullOrEmpty(this.FirstName) && isNullOrEmpty(this.LastName)) {
+            return "No Name Set";
+        } else {
+            if(isNullOrEmpty(this.FirstName)) {
+                return this.LastName;
+            } else if(isNullOrEmpty(this.LastName)) {
+                return this.FirstName;
+            } else {
+                return this.FirstName + " " + this.LastName;
+            }
+        }
+    }
 }

@@ -3,11 +3,20 @@ package com.astontech.bo;
 import java.util.Date;
 
 public class Employee extends Person{
+    //Parameters
     private int EmployeeId;
     private Date HireDate;
     private Date TermDate;
 
+    //Constructor
+    public Employee() {} //Default constructor
 
+    public Employee(String firstName, String lastName) {
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+    }
+
+    //Setters and Getters
     public int getEmployeeId() {
         return EmployeeId;
     }

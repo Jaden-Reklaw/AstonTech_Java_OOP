@@ -16,14 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LessonInheritance();
-
-        //LessonClassObjects();
-
-        //System.out.println("Test");
-        //Test myTest = new Test();
-        //System.out.println(myTest.Test_Method());
-
 	   //write your code here sout
        // System.out.println("Hello World!");
 
@@ -53,6 +45,35 @@ public class Main {
        // LessonFizzBuzzLab();
         //LessonCalculatorLab();
 
+        //System.out.println("Test");
+        //Test myTest = new Test();
+        //System.out.println(myTest.Test_Method());
+
+        //LessonClassObjects();
+
+        //LessonInheritance();
+
+        LessonMethods();
+    }
+
+    //method signature /declaration
+    /*
+    <access modifier> <instance/static> <return data type> <method name> (<data type> <param name, <data type> <param name> ...) {body}
+    private             static           void               LessonMethods   (nothing passed in)
+    public                               int                getPersonId     (nothing passed in)
+    public                               void               setPersonId     (int PersonId)
+     */
+    private static void LessonMethods() {
+        // constructors are special methods with same name as the class
+        Employee constructEmployee = new Employee("Axel", "Walker");
+        System.out.println(constructEmployee.getFirstName() + " " + constructEmployee.getLastName());
+
+        //Use getfullname method with a new employee with nothing set
+        Employee employee4 = new Employee();
+        System.out.println(employee4.GetFullName());
+
+        //get full name of object that has both firstname and lastname filled out
+        System.out.println(constructEmployee.GetFullName());
     }
 
     private static void LessonInheritance() {
