@@ -1,7 +1,9 @@
 package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
+import com.astontech.bo.Test;
 import com.astontech.bo.Person;
+import com.astontech.bo.Employee;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,13 +16,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LessonClassObjects();
+        LessonInheritance();
+
+        //LessonClassObjects();
 
         //System.out.println("Test");
         //Test myTest = new Test();
         //System.out.println(myTest.Test_Method());
 
-	// write your code here sout
+	   //write your code here sout
        // System.out.println("Hello World!");
 
         //System.out.println("sout is a great shortcut");
@@ -49,6 +53,28 @@ public class Main {
        // LessonFizzBuzzLab();
         //LessonCalculatorLab();
 
+    }
+
+    private static void LessonInheritance() {
+        // 4 Principles(tenets) Encapsulation, Abstraction, Inheritance, Polymorphism
+        //create an instance of Employee Object
+        Employee employee1 = new Employee();
+
+        //Set Id , firstName and lastName of Employee from Person Class and BaseBO
+        employee1.setId(13);
+        employee1.setFirstName("Jordan(e)");
+        employee1.setLastName("Walker(e)");
+
+        //Print info out
+        System.out.println("Id#" + employee1.getId() + " " + employee1.getFirstName() + " " + employee1.getLastName());
+
+        //create a Person object and inherit from BaseBO class Id
+        Person person3 = new Person();
+        person3.setId(7);
+        person3.setFirstName("Jordan(p)");
+        person3.setLastName("Walker(p)");
+
+        System.out.println("Id#" + person3.getId() + " " + person3.getFirstName() + " " + person3.getLastName());
     }
 
     private static void LessonClassObjects() {
