@@ -1,10 +1,11 @@
 package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
-import com.astontech.bo.Test;
-import com.astontech.bo.Person;
-import com.astontech.bo.Employee;
+import com.astontech.bo.*;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +54,19 @@ public class Main {
 
         //LessonInheritance();
 
-        LessonMethods();
+        //LessonMethods();
+
+        LessonObjectsLab();
+    }
+
+    private static void LessonObjectsLab() {
+        //1
+        Project myProject = new Project("Test", "2020-01-01", "2020-05-04");
+        System.out.println(myProject.GetDaysTillCompletion());
+
+        //2
+        Address myAddress = new Address("123 Hello World", "Earth", "MN", "54543");
+        System.out.println(myAddress.ShowFullAddress());
     }
 
     //method signature /declaration
