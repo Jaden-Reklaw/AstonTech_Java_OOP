@@ -1,19 +1,25 @@
 package com.astontech.console;
 
-
-import com.astontech.bo.Test;
+//import dependencies file -> project structure -> Dependency Tab
+import com.astontech.bo.Person;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Test");
-        Test myTest = new Test();
-        System.out.println(myTest.Test_Method());
+
+        LessonClassObjects();
+
+        //System.out.println("Test");
+        //Test myTest = new Test();
+        //System.out.println(myTest.Test_Method());
+
 	// write your code here sout
        // System.out.println("Hello World!");
 
@@ -43,6 +49,29 @@ public class Main {
        // LessonFizzBuzzLab();
         //LessonCalculatorLab();
 
+    }
+
+    private static void LessonClassObjects() {
+        //instantiating a new object
+        Person person1 = new Person();
+        Person person2 = new Person();
+
+        //Set title, firstname and lastname
+        person1.setTitle("Mr.");
+        person1.setFirstName("Jordan");
+        person1.setLastName("Walker");
+
+        person2.setTitle("Mrs.");
+        person2.setFirstName("Kelsey");
+        person2.setLastName("Walker");
+
+        //Print out
+        System.out.println(person1.getTitle()+ " " + person1.getFirstName() + " " + person1.getLastName());
+        System.out.println(person2.getTitle()+ " " + person2.getFirstName() + " " + person2.getLastName());
+
+        // Set super BaseBO class
+        person1.setId(7);
+        System.out.println(person1.getFirstName() + " Id is: " + person1.getId());
     }
 
     //Create another seperate method (LessonCalculatorLAB)
