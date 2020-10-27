@@ -69,13 +69,21 @@ public class Main {
     private static void LessonCollectionLab() {
         Employee emp1 = new Employee();
 
-        emp1.getVehicles().add(new Vehicle(LocalDate.of(2012, 02, 12), "4738474HJF84"));
-        emp1.getVehicles().add(new Vehicle(LocalDate.of(2013, 05, 11), "AAAAAA4HJF84"));
-        emp1.getVehicles().add(new Vehicle(LocalDate.of(2014, 06, 8), "473BBBBBBBBB"));
+        emp1.getVehicles().add(new Vehicle(LocalDate.of(2012, 02, 12), "4738474HJF84", new VehicleModel("CX5")));
+        emp1.getVehicles().add(new Vehicle(LocalDate.of(2013, 05, 11), "AAAAAA4HJF84", new VehicleModel("CX3")));
+        emp1.getVehicles().add(new Vehicle(LocalDate.of(2014, 06, 8), "473BBBBBBBBB", new VehicleModel("CX9")));
 
         for(Vehicle vehcile : emp1.getVehicles()) {
-            //System.out.println(vehcile.get);
+            System.out.println(vehcile.getModel().getVehicleModelName());
+        }
+        //With setter
+        emp1.getVehicles().get(0).getModel().setVehicleModelName("T1");
 
+        //with getter
+        System.out.println(emp1.getVehicles().get(0).getModel().getVehicleModelName());
+
+        for(Vehicle vehcile : emp1.getVehicles()) {
+            System.out.println(vehcile.getModel().getVehicleModelName());
         }
     }
 

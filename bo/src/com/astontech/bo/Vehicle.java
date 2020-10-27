@@ -6,15 +6,16 @@ import java.util.Date;
 public class Vehicle extends BaseBO{
     //Params
     private int VehicleId;
-    private int VehicleModelId;
+    private VehicleModel Model;
     private LocalDate Year;
     private String VIN;
 
     //Constructors
     public Vehicle() {}
-    public Vehicle(LocalDate year, String vin) {
+    public Vehicle(LocalDate year, String vin, VehicleModel model) {
         this.setYear(year);
         this.setVIN(vin);
+        this.setModel(model);
     }
 
     //Setters and Getters
@@ -26,15 +27,7 @@ public class Vehicle extends BaseBO{
         VehicleId = vehicleId;
     }
 
-    public int getVehicleModelId() {
-        return VehicleModelId;
-    }
-
-    public void setVehicleModelId(int vehicleModelId) {
-        VehicleModelId = vehicleModelId;
-    }
-
-    public Date getYear() {
+    public LocalDate getYear() {
         return Year;
     }
 
@@ -48,5 +41,13 @@ public class Vehicle extends BaseBO{
 
     public void setVIN(String VIN) {
         this.VIN = VIN;
+    }
+
+    public VehicleModel getModel() {
+        return Model;
+    }
+
+    public void setModel(VehicleModel model) {
+        Model = model;
     }
 }

@@ -1,5 +1,7 @@
 package com.astontech.bo;
 
+import java.util.List;
+
 public class VehicleModel extends BaseBO{
     //Params
     private int VehicleModelId;
