@@ -58,7 +58,22 @@ public class Main {
 
         //LessonObjectsLab();
 
-        LessonCollections();
+        //LessonCollections();
+
+        LessonComplexProperties();
+    }
+
+    private static void LessonComplexProperties() {
+        //When to use inheritance(Ask the question: 'IS A?'). Employee IS A Person
+        //When to use complex(nested) objects(Ask the question: 'HAS A?'). Employee HAS A Email
+        EntityType emailWorkType = new EntityType("Work");
+
+        //instance of an object using constructor sending email in
+        Email myEmail = new Email("bipin@aston.com");
+        //setting email type on the Email object that is connected to EntityType Object through an instance
+        myEmail.setEmailType(emailWorkType);
+
+        System.out.println(myEmail.getEmailAddress() +  " Type: " + myEmail.getEmailType().getEntityTypeName());
     }
 
     private static void LessonCollections() {

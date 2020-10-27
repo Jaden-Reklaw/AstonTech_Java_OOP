@@ -3,15 +3,12 @@ package com.astontech.bo;
 public class EntityType extends BaseBO{
     //Params
     private int EntityTypeId;
-    private int EntityTypeValue;
-    private int EntityId;
+    private String EntityTypeName;
 
     //Constructors
     public EntityType() {}
-    public EntityType(int entityTypeId, int entityTypeValue, int entityId) {
-        this.setEntityTypeId(entityTypeId);
-        this.setEntityTypeValue(entityTypeValue);
-        this.setEntityId(entityId);
+    public EntityType(String entityTypeName) {
+        this.EntityTypeName = entityTypeName;
     }
 
     //Setters and Getters
@@ -23,19 +20,11 @@ public class EntityType extends BaseBO{
         EntityTypeId = entityTypeId;
     }
 
-    public int getEntityTypeValue() {
-        return EntityTypeValue;
+    public String getEntityTypeName() {
+        return EntityTypeName;
     }
 
-    public void setEntityTypeValue(int entityTypeValue) {
-        EntityTypeValue = entityTypeValue;
-    }
-
-    public int getEntityId() {
-        return EntityId;
-    }
-
-    public void setEntityId(int entityId) {
-        EntityId = entityId;
+    public void setEntityTypeValue(String entityTypeName) {
+        EntityTypeName = entityTypeName;
     }
 }

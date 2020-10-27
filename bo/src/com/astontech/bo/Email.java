@@ -4,14 +4,18 @@ public class Email extends BaseBO {
     //Param
     private int EmailId;
     private String EmailAddress;
-    private int PersonId;
-    private int EntityTypeId;
+    private EntityType EmailType; //Nest object in another object
 
     //Constructors
-    public Email() {}
-    public Email(String emailAddress) {
-        this.setEmailAddress(emailAddress);
+    public Email() {
+        this.setEmailType(new EntityType());
     }
+
+    public Email(String emailAddress) {
+        this.setEmailType(new EntityType());
+        this.EmailAddress = emailAddress;
+    }
+
 
     //Setters and Getters
     public int getEmailId() {
@@ -30,19 +34,12 @@ public class Email extends BaseBO {
         EmailAddress = emailAddress;
     }
 
-    public int getPersonId() {
-        return PersonId;
+
+    public EntityType getEmailType() {
+        return EmailType;
     }
 
-    public void setPersonId(int personId) {
-        PersonId = personId;
-    }
-
-    public int getEntityTypeId() {
-        return EntityTypeId;
-    }
-
-    public void setEntityTypeId(int entityTypeId) {
-        EntityTypeId = entityTypeId;
+    public void setEmailType(EntityType emailType) {
+        EmailType = emailType;
     }
 }
