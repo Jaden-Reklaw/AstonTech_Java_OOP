@@ -63,7 +63,26 @@ public class Main {
 
         //LessonComplexProperties();
 
-        LessonCollectionLab();
+        //LessonCollectionLab();
+
+        LessonPolymorphism();
+    }
+
+    private static void LessonPolymorphism() {
+        // compile time polymorphism - overloaded
+        //think creating multiple constructors
+        Employee empOne = new Employee("Bob");
+        Employee empTwo = new Employee("Linda", "Belcher");
+        System.out.println(empOne.getFirstName());
+        System.out.println(empTwo.getFirstName() + " " + empTwo.getLastName());
+        // run-time polymorphism - override
+        //Override a method that is in a super class in a lower class
+        // Create a method in BaseBO and create the same method in Empl
+        BaseBO obj1 = new BaseBO();
+        System.out.println(obj1.test_method());
+
+        EntityType obj2 = new EntityType();
+        System.out.println(obj2.test_method());
     }
 
     private static void LessonCollectionLab() {

@@ -27,4 +27,9 @@ public class EntityType extends BaseBO{
     public void setEntityTypeValue(String entityTypeName) {
         EntityTypeName = entityTypeName;
     }
+
+    //Override BaseBO(supers) test_method EntityType
+    public String test_method() {
+        return "sub method that overrid BaseBO's test_method";
+    }
 }

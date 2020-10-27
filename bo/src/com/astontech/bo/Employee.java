@@ -11,6 +11,10 @@ public class Employee extends Person{
     //Constructor
     public Employee() {} //Default constructor
 
+    public Employee(String firstname) {
+        this.setFirstName(firstname);
+    }
+
     public Employee(String firstName, String lastName) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
