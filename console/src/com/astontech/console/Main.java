@@ -273,13 +273,13 @@ public class Main {
 //        } while (flag);
 
         //Using a switch/case perform the selected operation on the two entered numbers and output the result to the console.
-        switch (operator) {
-            case "-" -> System.out.println(num1 - num2);
-            case "+"-> System.out.println(num1 + num2);
-            case "*"-> System.out.println(num1 * num2);
-            case "/" -> System.out.println(num1/num2);
-            default -> System.out.println("This will never happen");
-        }
+        //switch (operator) {
+            //case "-" -> System.out.println(num1 - num2);
+            //case "+"-> System.out.println(num1 + num2);
+            //case "*"-> System.out.println(num1 * num2);
+            //case "/" -> System.out.println(num1/num2);
+            //default -> System.out.println("This will never happen");
+        //}
     }
 
     //Create a separate method (LessonFizzBuzzLAB)
@@ -401,14 +401,14 @@ public class Main {
 
         int day = 4;
         switch (day) {
-            case 1 -> System.out.println("Monday");
-            case 2 -> System.out.println("Tuesday");
-            case 3 -> System.out.println("Wednesday");
-            case 4 -> System.out.println("Thursday");
-            case 5 -> System.out.println("Friday");
-            case 6 -> System.out.println("Saturday");
-            case 7 -> System.out.println("Sunday");
-            default -> System.out.println("Not a day!");
+            case 1 : System.out.println("Monday");
+            case 2 : System.out.println("Tuesday");
+            case 3 : System.out.println("Wednesday");
+            case 4 : System.out.println("Thursday");
+            case 5 : System.out.println("Friday");
+            case 6 : System.out.println("Saturday");
+            case 7 : System.out.println("Sunday");
+            default : System.out.println("Not a day!");
         }
     }
 
