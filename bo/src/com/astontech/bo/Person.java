@@ -1,6 +1,10 @@
 package com.astontech.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person extends BaseBO{
+    //Properties
     // PersonId
     private int PersonId;
     // Title
@@ -13,6 +17,16 @@ public class Person extends BaseBO{
     private String DisplayFirstName;
     // Gender
     private String Gender;
+    // List of Email Objects
+    private List<Email> Emails;
+    //LIst of Vehicles
+    private List<Vehicle> Vehicles;
+
+    //Constructors
+    public Person() {
+        this.setEmails(new ArrayList<>());
+        this.setVehicles(new ArrayList<>());
+    }
 
     //Create setters and getters
     public void setPersonId(int personId) {
@@ -61,6 +75,22 @@ public class Person extends BaseBO{
 
     public String getGender() {
         return this.Gender;
+    }
+
+    public List<Email> getEmails() {
+        return Emails;
+    }
+
+    public void setEmails(List<Email> emails) {
+        Emails = emails;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return Vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        Vehicles = vehicles;
     }
 
     //Custom Methods

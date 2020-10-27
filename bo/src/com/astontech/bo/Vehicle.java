@@ -1,17 +1,18 @@
 package com.astontech.bo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Vehicle extends BaseBO{
     //Params
     private int VehicleId;
     private int VehicleModelId;
-    private Date Year;
+    private LocalDate Year;
     private String VIN;
 
     //Constructors
     public Vehicle() {}
-    public Vehicle(Date year, String vin) {
+    public Vehicle(LocalDate year, String vin) {
         this.setYear(year);
         this.setVIN(vin);
     }
@@ -37,7 +38,7 @@ public class Vehicle extends BaseBO{
         return Year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(LocalDate year) {
         Year = year;
     }
 

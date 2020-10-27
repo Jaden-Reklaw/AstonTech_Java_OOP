@@ -3,6 +3,7 @@ package com.astontech.console;
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -60,20 +61,51 @@ public class Main {
 
         //LessonCollections();
 
-        LessonComplexProperties();
+        //LessonComplexProperties();
+
+        LessonCollectionLab();
+    }
+
+    private static void LessonCollectionLab() {
+        Employee emp1 = new Employee();
+
+        emp1.getVehicles().add(new Vehicle(LocalDate.of(2012, 02, 12), "4738474HJF84"));
+        emp1.getVehicles().add(new Vehicle(LocalDate.of(2013, 05, 11), "AAAAAA4HJF84"));
+        emp1.getVehicles().add(new Vehicle(LocalDate.of(2014, 06, 8), "473BBBBBBBBB"));
+
+        for(Vehicle vehcile : emp1.getVehicles()) {
+            //System.out.println(vehcile.get);
+        }
     }
 
     private static void LessonComplexProperties() {
         //When to use inheritance(Ask the question: 'IS A?'). Employee IS A Person
         //When to use complex(nested) objects(Ask the question: 'HAS A?'). Employee HAS A Email
         EntityType emailWorkType = new EntityType("Work");
+        emailWorkType.setEntityTypeId(1);
 
         //instance of an object using constructor sending email in
         Email myEmail = new Email("bipin@aston.com");
         //setting email type on the Email object that is connected to EntityType Object through an instance
         myEmail.setEmailType(emailWorkType);
 
-        System.out.println(myEmail.getEmailAddress() +  " Type: " + myEmail.getEmailType().getEntityTypeName());
+        //myEmail.getEmailType().getEntityTypeName() object within and object accessed with dot notation
+        System.out.println(myEmail.getEmailAddress() +  " Type: " + myEmail.getEmailType().getEntityTypeName() +
+                           myEmail.getEmailType().getEntityTypeId());
+
+        //collection/list of complex(nested) objects as a property
+        Employee myEmployee = new Employee();
+        //Employee inherits from Person which has getEmails which sends back a List
+        //then you use .add to add more emails to that List and create new Email object in that list
+        myEmployee.getEmails().add(new Email("test1@test.com"));
+        myEmployee.getEmails().add(new Email("test2@test.com"));
+        myEmployee.getEmails().add(new Email("test3@test.com"));
+
+        //for each statement reads email with in myEmployee object then list using getEmails
+        for(Email email : myEmployee.getEmails()) {
+            System.out.println(email.getEmailAddress());
+        }
+
     }
 
     private static void LessonCollections() {
