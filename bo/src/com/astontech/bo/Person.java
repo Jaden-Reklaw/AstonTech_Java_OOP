@@ -2,6 +2,8 @@ package com.astontech.bo;
 
 import java.util.ArrayList;
 import java.util.List;
+import
+import common.helpers.StringHelper;
 
 public class Person extends BaseBO{
     //Properties
@@ -93,19 +95,13 @@ public class Person extends BaseBO{
         Vehicles = vehicles;
     }
 
-    //Custom Methods
-    //this will become an extension method
-    public static boolean isNullOrEmpty(String s) {
-        return s == null || s.length() == 0;
-    }
-
     public String GetFullName() {
-        if(isNullOrEmpty(this.FirstName) && isNullOrEmpty(this.LastName)) {
+        if(StringHelper.isNullOrEmpty(this.FirstName) && StringHelper.isNullOrEmpty(this.LastName)) {
             return "No Name Set";
         } else {
-            if(isNullOrEmpty(this.FirstName)) {
+            if(StringHelper.isNullOrEmpty(this.FirstName)) {
                 return this.LastName;
-            } else if(isNullOrEmpty(this.LastName)) {
+            } else if(StringHelper.isNullOrEmpty(this.LastName)) {
                 return this.FirstName;
             } else {
                 return this.FirstName + " " + this.LastName;

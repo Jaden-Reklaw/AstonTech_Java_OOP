@@ -2,12 +2,9 @@ package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
-import com.astontech.common.Math;
+import common.helpers.MathHelper;
 
-import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -62,14 +59,13 @@ public class Main {
 
         //LessonCollectionLab();
 
-        LessonInstanceVsStatic();
+        //LessonInstanceVsStatic();
 
         //LessonPolymorphism();
 
         //LessonHash();
 
         //LessonValueVsRef();
-
 
     }
 
@@ -198,17 +194,10 @@ public class Main {
     }
 
     private static void LessonInstanceVsStatic() {
-        //Create and instance of an obj using new
-        Math obj1 = new Math();
-        //Already has a static instance with static key word on variable
-        System.out.println(Math.E);
-        //Don't have static key word thus have to use instance var declaration
-        System.out.println(obj1.PI);
-        System.out.println(obj1.square(5));
-
-        //Example don't do this remove static from LessonCollection
-        //Main instanceOfMain = new Main();
-        //instanceOfMain.LessonCollection();
+        //Add dependency file -> project structure -> modules -> dependency tab -> + button -> select dependency
+        System.out.println(MathHelper.E);
+        System.out.println(MathHelper.PI);
+        System.out.println(MathHelper.square(5));
     }
 
     private static void LessonCollectionLab() {
