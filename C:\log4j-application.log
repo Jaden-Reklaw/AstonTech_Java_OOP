@@ -1,0 +1,10 @@
+2020-10-28 14:20:31 DEBUG Main:82 - This is a DEBUG message
+2020-10-28 14:20:31 INFO  Main:83 - This is a INFO message
+2020-10-28 14:20:31 WARN  Main:84 - This is a WARN message
+2020-10-28 14:20:31 ERROR Main:85 - This is a FATAL message
+2020-10-28 14:20:31 FATAL Main:86 - This is a FATAL message
+2020-10-28 14:21:03 DEBUG Main:82 - This is a DEBUG message
+2020-10-28 14:21:03 INFO  Main:83 - This is a INFO message
+2020-10-28 14:21:03 WARN  Main:84 - This is a WARN message
+2020-10-28 14:21:03 ERROR Main:85 - This is a FATAL message
+2020-10-28 14:21:03 FATAL Main:86 - This is a FATAL message

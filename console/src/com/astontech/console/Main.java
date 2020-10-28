@@ -6,11 +6,15 @@ import common.helpers.MathHelper;
 import interfaces.Home;
 import interfaces.ILocation;
 import interfaces.Site;
+import org.apache.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
+
+    //Create an instance of the Logger
+    final static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
 
@@ -69,7 +73,27 @@ public class Main {
 
         //LessonValueVsRef();
 
-        LessonInterfaceTest();
+        //LessonInterfaceTest();
+
+        LessonLogging();
+    }
+
+    private static void LessonLogging() {
+        //levels of logging
+        //development level
+        logger.debug("This is a DEBUG message");
+        logger.info("This is a INFO message");
+        // production level
+        logger.warn("This is a WARN message");
+        logger.error("This is a FATAL message");
+        logger.fatal("This is a FATAL message");
+
+        //log and exception
+        try {
+            int i = 10 /0;
+        } catch (ArithmeticException error) {
+            logger.error("An exception occurred: " + error);
+        }
     }
 
     private static void LessonInterfaceTest() {
