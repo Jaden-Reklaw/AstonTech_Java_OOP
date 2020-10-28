@@ -63,7 +63,33 @@ public class Main {
 
         //LessonPolymorphism();
 
-        LessonHash();
+        //LessonHash();
+
+        LessonValueVsRef();
+    }
+
+    private static void LessonValueVsRef() {
+        System.out.println("--ref types--");
+        //references are objects
+        Employee firstEmp = new Employee();
+        firstEmp.setFirstName("Jordan");
+
+        //secondEmp is pointing to firstEmp thus if you change one you change the other
+        Employee secondEmp = firstEmp;
+        secondEmp.setFirstName("Kelsey");
+
+        System.out.println(firstEmp.getFirstName());
+        System.out.println(secondEmp.getFirstName());
+
+        //Value types
+        System.out.println("--value types--");
+        int num1 = 10;
+        int num2 = num1;
+        System.out.println(num1);
+        System.out.println(num2);
+        num2 = 20;
+        System.out.println(num1);
+        System.out.println(num2);
     }
 
     private static void LessonHash() {
@@ -145,7 +171,7 @@ public class Main {
         } else {
             System.out.println("Value does not exist!");
         }
-        System.out.println("Test1");
+
         System.out.println("----------------");
     }
 
