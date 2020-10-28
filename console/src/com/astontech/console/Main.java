@@ -145,7 +145,7 @@ public class Main {
         } else {
             System.out.println("Value does not exist!");
         }
-
+        System.out.println("Test");
         System.out.println("----------------");
     }
 
