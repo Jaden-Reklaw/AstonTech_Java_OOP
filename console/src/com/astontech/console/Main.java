@@ -7,11 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-
+import java.util.*;
 
 
 public class Main {
@@ -65,7 +61,92 @@ public class Main {
 
         //LessonCollectionLab();
 
-        LessonPolymorphism();
+        //LessonPolymorphism();
+
+        LessonHash();
+    }
+
+    private static void LessonHash() {
+        // Key-Value Pairs / Value List
+        /*
+        Hash Table
+        1.) Does NOT allow null for either key or value
+        2.) synchronized, thread safe, but performance is decreased
+         */
+
+        System.out.println("---Hash Table---");
+
+        Hashtable<Integer, String> oopPrinciples = new Hashtable<>();
+        oopPrinciples.put(1, "Inheritance");
+        oopPrinciples.put(2, "Polymorphism");
+        oopPrinciples.put(3, "Abstraction");
+        oopPrinciples.put(4, "Encapsulation");
+        //oopPrinciples.put(5, null); // throws null pointer execption
+
+        //Single output from hashtable
+        System.out.println(oopPrinciples.get(3));
+
+        //All values
+        for(Integer key : oopPrinciples.keySet()) {
+            System.out.println(oopPrinciples.get(key));
+        };
+        System.out.println("----------------");
+
+        // Key-Value Pairs / Value List
+        /*
+        Hash Map
+        1.) Does allow null for either key or value
+        2.) unsynchronized, not thread safe, but performance is better
+         */
+
+        System.out.println("---Hash Map---");
+
+        HashMap<Integer, String> oopPrinciples2 = new HashMap<>();
+        oopPrinciples2.put(1, "Inheritance");
+        oopPrinciples2.put(2, "Polymorphism");
+        oopPrinciples2.put(3, "Abstraction");
+        oopPrinciples2.put(4, "Encapsulation");
+        oopPrinciples2.put(5, null);
+
+        //Single output from hashtable
+        System.out.println(oopPrinciples2.get(3));
+
+        //All values
+        for(Integer key : oopPrinciples.keySet()) {
+            System.out.println(oopPrinciples.get(key));
+        };
+        System.out.println("----------------");
+
+        // Key-Value Pairs / Value List
+        /*
+        Hash Set
+        1.) Built in mechanism for duplicates
+        2.) used for when you wanna maintain unique list
+         */
+
+        System.out.println("---Hash Set---");
+
+        HashSet<String> oopPrinciples3 = new HashSet<>();
+        oopPrinciples3.add("Inheritance");
+        oopPrinciples3.add("Polymorphism");
+        oopPrinciples3.add("Abstraction");
+        oopPrinciples3.add("Encapsulation");
+
+        //Single output from hashtable
+        System.out.println(oopPrinciples3);
+
+        //All values
+        for(String s : oopPrinciples3) {
+            System.out.println(s);
+        }
+
+        if(oopPrinciples.contains("Inheritance")) {
+            System.out.println("Value does exist!");
+        } else {
+            System.out.println("Value does not exist!");
+        }
+
+        System.out.println("----------------");
     }
 
     private static void LessonPolymorphism() {
