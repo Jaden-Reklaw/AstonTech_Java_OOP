@@ -2,6 +2,7 @@ package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
+import com.astontech.common.Math;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -61,11 +62,15 @@ public class Main {
 
         //LessonCollectionLab();
 
+        LessonInstanceVsStatic();
+
         //LessonPolymorphism();
 
         //LessonHash();
 
-        LessonValueVsRef();
+        //LessonValueVsRef();
+
+
     }
 
     private static void LessonValueVsRef() {
@@ -190,6 +195,20 @@ public class Main {
 
         EntityType obj2 = new EntityType();
         System.out.println(obj2.test_method());
+    }
+
+    private static void LessonInstanceVsStatic() {
+        //Create and instance of an obj using new
+        Math obj1 = new Math();
+        //Already has a static instance with static key word on variable
+        System.out.println(Math.E);
+        //Don't have static key word thus have to use instance var declaration
+        System.out.println(obj1.PI);
+        System.out.println(obj1.square(5));
+
+        //Example don't do this remove static from LessonCollection
+        //Main instanceOfMain = new Main();
+        //instanceOfMain.LessonCollection();
     }
 
     private static void LessonCollectionLab() {
