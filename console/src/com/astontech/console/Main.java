@@ -3,10 +3,12 @@ package com.astontech.console;
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
 import common.helpers.MathHelper;
+import interfaces.Home;
+import interfaces.ILocation;
+import interfaces.Site;
 
 import java.time.LocalDate;
 import java.util.*;
-
 
 public class Main {
 
@@ -67,6 +69,32 @@ public class Main {
 
         //LessonValueVsRef();
 
+        LessonInterfaceTest();
+    }
+
+    private static void LessonInterfaceTest() {
+        Site MN010 = new Site();
+        MN010.setSiteName("MN010");
+        MN010.setCoffeeMachine(2);
+        MN010.setConferenceRooms(1);
+        MN010.setOffices(6);
+        MN010.setCubicles(8);
+        MN010.setTrainingDesks(36);
+
+        Home myHouse = new Home();
+        myHouse.setAddress("123 Main Stree");
+        myHouse.setOwner(new Employee("Jordan", "Walker"));
+
+        LessonInterfaces(MN010);
+        LessonInterfaces(myHouse);
+    }
+
+    private static void LessonInterfaces(ILocation Ilocation) {
+        System.out.println("=================");
+        System.out.println("Location Name: " + Ilocation.getLocationName());
+        System.out.println("Can have meetings: " + Ilocation.canHaveMeetings());
+        System.out.println("Number of work spaces: " + Ilocation.numberOfWorkSpaces());
+        System.out.println("Has Coffee: " + Ilocation.hasCoffee());
     }
 
     private static void LessonValueVsRef() {

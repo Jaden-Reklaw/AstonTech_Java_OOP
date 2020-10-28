@@ -2,7 +2,6 @@ package com.astontech.bo;
 
 import java.util.ArrayList;
 import java.util.List;
-import
 import common.helpers.StringHelper;
 
 public class Person extends BaseBO{
