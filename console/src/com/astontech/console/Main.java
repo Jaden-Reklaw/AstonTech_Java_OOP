@@ -3,9 +3,9 @@ package com.astontech.console;
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
 import common.helpers.MathHelper;
-import interfaces.Home;
-import interfaces.ILocation;
-import interfaces.Site;
+import common.helpers.StringHelper;
+import interfaces.*;
+import interfaces.Test;
 import org.apache.log4j.Logger;
 
 import java.time.LocalDate;
@@ -75,7 +75,25 @@ public class Main {
 
         //LessonInterfaceTest();
 
-        LessonLogging();
+        //LessonLogging();
+
+        LessonComparable();
+    }
+
+    public static void LessonComparable() {
+        Person p1 = new Person(7, "Bob");
+        Person p2 = new Person(5, "Linda");
+
+        System.out.println("Compare to Returns :: " + p1.compareTo(p2));
+        int result = p1.compareTo(p2);
+
+        if(result < 0) {
+            System.out.println(p1.getFirstName() + " comes before " + p2.getFirstName());
+        } else if(result > 0) {
+            System.out.println(p2.getFirstName() + " comes before " + p1.getFirstName());
+        } else {
+            System.out.println(p1.getFirstName() + " are equals " + p2.getFirstName());
+        }
     }
 
     private static void LessonLogging() {
@@ -111,6 +129,27 @@ public class Main {
 
         LessonInterfaces(MN010);
         LessonInterfaces(myHouse);
+
+        //Two new classes connected to the Player interface
+        Wizard wiz1 = new Wizard("Bob Belcher", "Burger Flip of Destiny", "Blue");
+        Warrior war1 = new Warrior("Louis Belcher","House Kuchi Kopi", "Imagination of My Creation", "Brute");
+        UsePlayerInterface(wiz1);
+        UsePlayerInterface(war1);
+
+        //Send to Test class that uses CharSequence Interface with a method that prints things backwards
+        Test test = new Test();
+        UseCharSequenceInterface(test.StringBackWard("Hello World!"));
+    }
+
+    private static void UseCharSequenceInterface(CharSequence charSequence) {
+        //print string backwards
+        System.out.println(charSequence);
+    }
+
+    private static void UsePlayerInterface(Player player) {
+        System.out.println(player.attack());
+        System.out.println(player.eat());
+        System.out.println(1 + player.move());
     }
 
     private static void LessonInterfaces(ILocation Ilocation) {
@@ -250,6 +289,15 @@ public class Main {
         System.out.println(MathHelper.E);
         System.out.println(MathHelper.PI);
         System.out.println(MathHelper.square(5));
+        //Three helper methods for StringHelper
+        System.out.println(StringHelper.removeLeadingAndTrailingSpaces("  Hello  "));
+        System.out.println(StringHelper.removeAllSpace(" He ll o !"));
+        System.out.println(StringHelper.yelling("hello"));
+        //Three helper methods for MathHelper
+        System.out.println(MathHelper.cubed(5));
+        System.out.println(MathHelper.areaOfRectangle(2,3));
+        System.out.println(MathHelper.perimeterOfRectangle(4, 5));
+
     }
 
     private static void LessonCollectionLab() {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import common.helpers.StringHelper;
 
-public class Person extends BaseBO{
+public class Person extends BaseBO implements Comparable{
     //Properties
     // PersonId
     private int PersonId;
@@ -24,6 +24,11 @@ public class Person extends BaseBO{
     private List<Vehicle> Vehicles;
 
     //Constructors
+    public Person(int personId, String firstName) {
+        this.setPersonId(personId);
+        this.setFirstName(firstName);
+    }
+
     public Person() {
         this.setEmails(new ArrayList<>());
         this.setVehicles(new ArrayList<>());
@@ -105,6 +110,19 @@ public class Person extends BaseBO{
             } else {
                 return this.FirstName + " " + this.LastName;
             }
+        }
+    }
+
+    @Override
+    public int compareTo(Object Person1) {
+        Person Person2 = (Person) Person1;
+
+        if(getPersonId() > Person2.getPersonId()) {
+            return 1;
+        } else if(getPersonId() < Person2.getPersonId()) {
+            return -1;
+        } else {
+            return 0;
         }
     }
 }

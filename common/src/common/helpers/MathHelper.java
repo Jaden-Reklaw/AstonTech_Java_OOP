@@ -7,4 +7,16 @@ public class MathHelper {
     public static int square(int val) {
         return val * val;
     }
+
+    public static int cubed(int val) {
+        return val * val * val;
+    }
+
+    public static int areaOfRectangle(int length, int width) {
+       return length * width;
+    }
+
+    public static int perimeterOfRectangle(int length, int width) {
+        return 2 * (length + width);
+    }
 }
