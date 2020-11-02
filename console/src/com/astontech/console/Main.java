@@ -84,7 +84,27 @@ public class Main {
 
         //LessonDBConnection();
 
-        LessonExecQuery();
+        //LessonExecQuery();
+
+        LessonGetStoredProcedure();
+    }
+
+    private static void LessonGetStoredProcedure() {
+        Connection conn = LessonDBConnection();
+        try {
+            String sp = "{CALL USP_GetPerson(?, ?)}";
+            CallableStatement cStmt = conn.prepareCall(sp);
+
+            cStmt.setInt(1, 20);
+            cStmt.setInt(2, 2);
+            ResultSet rs = cStmt.executeQuery();
+
+            while(rs.next()) {
+                System.out.println(rs.getInt(1) + ": " + rs.getString(2) + " " + rs.getString(3));
+            }
+        } catch (SQLException ex) {
+            logger.error(ex);
+        }
     }
 
     private static void LessonExecQuery() {
