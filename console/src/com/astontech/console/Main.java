@@ -8,6 +8,7 @@ import common.helpers.MathHelper;
 import common.helpers.StringHelper;
 import interfaces.*;
 import interfaces.Test;
+import mysql.PersonDAOImpl;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -119,7 +120,7 @@ public class Main {
         deletePerson()
         */
         //region Create Menu
-        PersonDAO personDAO = null; //amend in next lesson
+        PersonDAO personDAO = new PersonDAOImpl(); //amend in next lesson
         List<Person> personList = personDAO.getPersonList();
 
         System.out.println("===============================");
@@ -139,7 +140,7 @@ public class Main {
         Person personDetail = personDAO.getPersonById(Integer.parseInt(personId));
 
         System.out.println("---Person Details---");
-        System.out.println("Full Name: " + personDetail.getFirstName());
+        System.out.println("Full Name: " + personDetail.GetFullName());
         //endregion
     }
 
