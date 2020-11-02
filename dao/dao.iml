@@ -7,11 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="bo" />
-    <orderEntry type="module" module-name="common" />
-    <orderEntry type="library" name="log4j-1.2.17" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.11" level="project" />
-    <orderEntry type="module" module-name="dao" />
+    <orderEntry type="module" module-name="bo" exported="" />
   </component>
 </module>

@@ -2,6 +2,7 @@ package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
+import com.astontech.dao.PersonDAO;
 import com.mysql.cj.protocol.Resultset;
 import common.helpers.MathHelper;
 import common.helpers.StringHelper;
@@ -86,7 +87,60 @@ public class Main {
 
         //LessonExecQuery();
 
-        LessonGetStoredProcedure();
+        //LessonGetStoredProcedure();
+
+        LessonDAO();
+    }
+
+    private static void LessonDAO() {
+        /*
+        Person Table
+        Person Id
+        FirstName
+        LastName
+        DisplayFirstname
+        etc...
+
+        <<interface>> PersonDAO
+        getPersonById()
+        getPersonList()
+        insertPerson()
+        updatePerson()
+        deletePerson()
+
+        Main Java Class
+        LessonDAO
+
+        PersonDAOImplement
+        getPersonById()
+        getPersonList()
+        insertPerson()
+        updatePerson()
+        deletePerson()
+        */
+        //region Create Menu
+        PersonDAO personDAO = null; //amend in next lesson
+        List<Person> personList = personDAO.getPersonList();
+
+        System.out.println("===============================");
+        for(Person person: personList) {
+            System.out.println(person.getPersonId() + ": " + person.getFirstName() + " " + person.getLastName());
+        }
+        System.out.println("===============================");
+        //endregion
+
+        //region Prompt User
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Please Select a Person from the list: ");
+        String personId = reader.nextLine();
+        //endregion
+
+        //region Get Person Details
+        Person personDetail = personDAO.getPersonById(Integer.parseInt(personId));
+
+        System.out.println("---Person Details---");
+        System.out.println("Full Name: " + personDetail.getFirstName());
+        //endregion
     }
 
     private static void LessonGetStoredProcedure() {
