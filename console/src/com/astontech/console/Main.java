@@ -8,6 +8,9 @@ import interfaces.*;
 import interfaces.Test;
 import org.apache.log4j.Logger;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -77,7 +80,41 @@ public class Main {
 
         //LessonLogging();
 
-        LessonComparable();
+        //LessonComparable();
+
+        LessonDBConnection();
+    }
+
+    private static void LessonDBConnection() {
+
+        String dbHost = "localhost";
+        String dbName = "aston_database";
+        String dbUser = "root";
+        String dbPass = "password";
+        String useSSL = "false";
+        String procBod = "true";
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch(ClassNotFoundException ex) {
+            logger.error("MySQL Drier not found!", ex);
+            return;
+        }
+        logger.info("MySQL Driver Registered.");
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
+        } catch (SQLException ex) {
+            logger.error("Connection failed" + ex);
+            return;
+        }
+
+        if(connection != null) {
+            logger.info("Successfully connected to MySQL database");
+        } else {
+            logger.info("Connection failed!");
+        }
     }
 
     public static void LessonComparable() {
