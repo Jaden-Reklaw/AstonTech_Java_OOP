@@ -2,17 +2,17 @@ package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
+import com.mysql.cj.protocol.Resultset;
 import common.helpers.MathHelper;
 import common.helpers.StringHelper;
 import interfaces.*;
 import interfaces.Test;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.Date;
 
 public class Main {
 
@@ -82,15 +82,38 @@ public class Main {
 
         //LessonComparable();
 
-        LessonDBConnection();
+        //LessonDBConnection();
+
+        LessonExecQuery();
     }
 
-    private static void LessonDBConnection() {
+    private static void LessonExecQuery() {
+        Connection conn = LessonDBConnection();
+
+        try {
+            Statement statement = conn.createStatement();
+            String sql1 = "SELECT PersonID, FirstName, LastName FROM Person";
+            ResultSet rs = statement.executeQuery(sql1);
+
+            while (rs.next()) {
+                int personId = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+
+                System.out.println(personId + ": " + firstName + " " + lastName);
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            logger.error(ex);
+        }
+    }
+
+    private static Connection LessonDBConnection() {
 
         String dbHost = "localhost";
         String dbName = "aston_database";
-        String dbUser = "root";
-        String dbPass = "password";
+        String dbUser = "consoleUser";
+        String dbPass = "Password1@";
         String useSSL = "false";
         String procBod = "true";
 
@@ -98,7 +121,7 @@ public class Main {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch(ClassNotFoundException ex) {
             logger.error("MySQL Drier not found!", ex);
-            return;
+            return null;
         }
         logger.info("MySQL Driver Registered.");
         Connection connection = null;
@@ -107,13 +130,15 @@ public class Main {
             connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
         } catch (SQLException ex) {
             logger.error("Connection failed" + ex);
-            return;
+            return null;
         }
 
         if(connection != null) {
             logger.info("Successfully connected to MySQL database");
+            return connection;
         } else {
             logger.info("Connection failed!");
+            return null;
         }
     }
 
