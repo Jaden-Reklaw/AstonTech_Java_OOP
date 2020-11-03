@@ -3,7 +3,6 @@ package com.astontech.console;
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
 import com.astontech.dao.PersonDAO;
-import com.mysql.cj.protocol.Resultset;
 import common.helpers.MathHelper;
 import common.helpers.StringHelper;
 import interfaces.*;
@@ -90,7 +89,63 @@ public class Main {
 
         //LessonGetStoredProcedure();
 
-        LessonDAO();
+        //LessonDAO();
+
+        PostgreSQLExecQuery();
+    }
+
+    private static Connection PostrgreSQLConnection() {
+        String dbHost = "localhost";
+        String dbName = "hr";
+        String dbUser = "postgres";
+        String dbPass = "Welcome1@";
+        String useSSL = "false";
+        String procBod = "true";
+
+        try{
+            Class.forName("org.postgresql.Driver");
+        } catch(ClassNotFoundException ex) {
+            logger.error("PostgreSQL Driver not found!", ex);
+            return null;
+        }
+        logger.info("PostgreSQL Driver Registered.");
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:postgresql://" + dbHost + ":5432/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
+        } catch (SQLException ex) {
+            logger.error("Connection failed" + ex);
+            return null;
+        }
+
+        if(connection != null) {
+            logger.info("Successfully connected to PostgreSQL database");
+            return connection;
+        } else {
+            logger.info("Connection failed!");
+            return null;
+        }
+    }
+
+    private static void PostgreSQLExecQuery() {
+        Connection conn = PostrgreSQLConnection();
+
+        try {
+            Statement statement = conn.createStatement();
+            String sql1 = "SELECT PersonID, FirstName, LastName FROM Person";
+            ResultSet rs = statement.executeQuery(sql1);
+
+            while (rs.next()) {
+                int personId = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+
+                System.out.println(personId + ": " + firstName + " " + lastName);
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            logger.error(ex);
+        }
     }
 
     private static void LessonDAO() {
