@@ -130,7 +130,35 @@ public class PersonDAOImpl extends MySQL implements PersonDAO {
 
     @Override
     public boolean deletePerson(int personId) {
-        return false;
+        //Connect to database
+        Connect();
+        int id = 0; //thing to change on return
+
+        try {
+            //CALL USP_ExecPerson(QueryID, PersonID, Title , FirstName, LastName, DisplayFirstName, IsDeleted, Gender, CreateDate);
+            String storeProcedure = "{CALL USP_ExecPerson(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(storeProcedure);
+
+            statement.setInt(1, DELETE);
+            statement.setInt(2, personId);
+            statement.setString(3, "");
+            statement.setString(4, "");
+            statement.setString(5, "");
+            statement.setString(6, "");
+            statement.setInt(7, 0);
+            statement.setString(8, "");
+            statement.setDate(9, new java.sql.Date(0));
+
+            //Execute query and get last id created
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id = rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return id > 0;
     }
 
     private static Person HydrateObject(ResultSet rs) throws SQLException {
@@ -151,7 +179,7 @@ public class PersonDAOImpl extends MySQL implements PersonDAO {
         person.setFirstName(rs.getString(3));
         person.setLastName(rs.getString(4));
         person.setDisplayFirstName(rs.getString(5));
-        person.setIsDeleted(rs.getByte(6));
+        person.setIsDeleted(rs.getBoolean(6));
         person.setGender(rs.getString(7));
         person.setCreateDate(rs.getDate(8));
 

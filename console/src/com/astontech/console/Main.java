@@ -103,7 +103,19 @@ public class Main {
 
         //LessonDAOInsert();
 
-        LessonDAOUpdate();
+        //LessonDAOUpdate();
+
+        LessonDAODelete();
+    }
+
+    private static void LessonDAODelete() {
+        PersonDAO personDAO = new PersonDAOImpl();
+
+        if(personDAO.deletePerson(7)) {
+            System.out.println("Successfully removed person from Database!");
+        } else {
+            System.out.println("Failed to remove person from Database!");
+        }
     }
 
     private static void LessonDAOUpdate() {
