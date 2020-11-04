@@ -105,7 +105,54 @@ public class Main {
 
         //LessonDAOUpdate();
 
-        LessonDAODelete();
+        //LessonDAODelete();
+
+        EmployeeDAOInsertUpdateDelete();
+    }
+    private static void EmployeeDAOInsertUpdateDelete() {
+        /*
+        //region Insert
+        //instantiate Employee object
+        Employee employee = new Employee();
+
+        //Hydrate employee properties
+        //QueryID, EmployeeID, Email, HireDate, TermDate, BirthDate, PersonId
+        employee.setEmail("HelloWorld@test.com");
+        employee.setBirthDate(new Date());
+        employee.setPersonId(4);
+
+
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        int id = employeeDAO.insertEmployee(employee);
+
+        System.out.println("New Employee Record Inserted. ID: " + id );
+        //endregion
+        */
+        /*
+        //region Update
+        //Create instance of Person Data Access Object
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+
+        Employee employee = employeeDAO.getEmployeeById(5);
+        employee.setEmail("test@test1.com");
+
+        if(employeeDAO.updateEmployee(employee)) {
+            System.out.println("Employee Update Success!");
+        } else {
+            System.out.println("Employee Update Fail!");
+        }
+        //endregion
+        */
+
+        //region Delete
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        if(employeeDAO.deleteEmployee(6)) {
+            System.out.println("Successfully removed employee from Database!");
+        } else {
+            System.out.println("Failed to remove employee from Database!");
+        }
+        //endregion
+
     }
 
     private static void LessonDAODelete() {
@@ -124,7 +171,6 @@ public class Main {
 
         Person person = personDAO.getPersonById(7);
         person.setFirstName("Teddy");
-        person.setIsDeleted(true);
 
         if(personDAO.updatePerson(person)) {
             System.out.println("Person Update Success!");
@@ -219,7 +265,7 @@ public class Main {
 
         System.out.println("===============================");
         for(Employee employee: employeeList) {
-            System.out.println(employee.getEmployeeId() + ": " + employee.getEmail() + " " + employee.getDOB());
+            System.out.println(employee.getEmployeeId() + ": " + employee.getEmail() + " " + employee.getBirthDate());
         }
         System.out.println("===============================");
     }

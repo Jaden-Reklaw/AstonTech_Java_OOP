@@ -1,8 +1,8 @@
 package mysql;
 
 import com.astontech.bo.Employee;
-import com.astontech.bo.Person;
 import com.astontech.dao.EmployeeDAO;
+import common.helpers.DateHelper;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -64,17 +64,95 @@ public class EmployeeDAOImpl extends MySQL implements EmployeeDAO {
 
     @Override
     public int insertEmployee(Employee employee) {
-        return 0;
+        //Connect to database
+        Connect();
+        int id = 0; //thing to change on return
+
+        try {
+            //CALL USP_ExecPerson(QueryID, EmployeeID, Email, HireDate, TermDate, BirthDate, PersonId);
+            String storeProcedure = "{CALL USP_ExecEmployee(?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(storeProcedure);
+
+            statement.setInt(1, INSERT);
+            statement.setInt(2, 0);
+            statement.setString(3, employee.getEmail());
+            statement.setDate(4, DateHelper.utilDateToSqlDate(employee.getHireDate()));
+            statement.setDate(5, DateHelper.utilDateToSqlDate(employee.getTermDate()));
+            statement.setDate(6, DateHelper.utilDateToSqlDate(employee.getBirthDate()));
+            statement.setInt(7, employee.getPersonId());
+
+            //Execute query and get last id created
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return id;
     }
 
     @Override
     public boolean updateEmployee(Employee employee) {
-        return false;
+        //Connect to database
+        Connect();
+        int id = 0; //thing to change on return
+
+        try {
+            //CALL USP_ExecPerson(QueryID, EmployeeID, Email, HireDate, TermDate, BirthDate, PersonId);
+            String storeProcedure = "{CALL USP_ExecEmployee(?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(storeProcedure);
+
+            statement.setInt(1, UPDATE);
+            statement.setInt(2, employee.getEmployeeId());
+            statement.setString(3, employee.getEmail());
+            statement.setDate(4, null);
+            statement.setDate(5, null);
+            statement.setDate(6, null);
+            statement.setInt(7, employee.getPersonId());
+
+            //Execute query and get last id created
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return id > 0;
     }
 
     @Override
     public boolean deleteEmployee(int employeeId) {
-        return false;
+        //Connect to database
+        Connect();
+        int id = 0; //thing to change on return
+
+        try {
+            //CALL USP_ExecPerson(QueryID, EmployeeID, Email, HireDate, TermDate, BirthDate, PersonId);
+            String storeProcedure = "{CALL USP_ExecEmployee(?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(storeProcedure);
+
+            statement.setInt(1, DELETE);
+            statement.setInt(2, employeeId);
+            statement.setString(3, null);
+            statement.setDate(4, null);
+            statement.setDate(5, null);
+            statement.setDate(6, null);
+            statement.setInt(7, 0);
+
+            //Execute query and get last id created
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return id > 0;
     }
 
     private static Employee HydrateObject(ResultSet rs) throws SQLException {
@@ -83,7 +161,10 @@ public class EmployeeDAOImpl extends MySQL implements EmployeeDAO {
         //Hydrating an object
         employee.setEmployeeId(rs.getInt(1));
         employee.setEmail(rs.getString(2));
-        employee.setDOB(rs.getDate(3));
+        employee.setHireDate(rs.getDate(3));
+        employee.setTermDate(rs.getDate(4));
+        employee.setBirthDate(rs.getDate(5));
+        employee.setPersonId(rs.getInt(6));
 
         return employee;
     }

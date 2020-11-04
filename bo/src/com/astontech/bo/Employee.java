@@ -3,14 +3,16 @@ package com.astontech.bo;
 import java.util.Date;
 
 public class Employee extends Person{
-    //Parameters
+    //region Properties
     private int EmployeeId;
     private String Email;
-    private Date DOB;
     private Date HireDate;
     private Date TermDate;
+    private Date BirthDate;
+    //don't need PersonID since inherited from Person Class
+    //endregion
 
-    //Constructor
+    //region Constructors
     public Employee() {} //Default constructor
 
     public Employee(String firstname) {
@@ -21,6 +23,7 @@ public class Employee extends Person{
         this.setFirstName(firstName);
         this.setLastName(lastName);
     }
+    //endregion
 
     //region Setters and Getters
     public int getEmployeeId() {
@@ -29,6 +32,14 @@ public class Employee extends Person{
 
     public void setEmployeeId(int employeeId) {
         EmployeeId = employeeId;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public Date getHireDate() {
@@ -47,20 +58,13 @@ public class Employee extends Person{
         TermDate = termDate;
     }
 
-    public String getEmail() {
-        return Email;
+    public Date getBirthDate() {
+        return BirthDate;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setBirthDate(Date birthDate) {
+        BirthDate = birthDate;
     }
 
-    public Date getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
-    }
     //endregion
 }
