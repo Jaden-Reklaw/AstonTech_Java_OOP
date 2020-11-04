@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import common.helpers.StringHelper;
 
-public class Person extends BaseBO implements Comparable{
+public class Person extends BaseBO /*implements Comparable*/ implements java.io.Serializable{
     //region Properties
     // PersonId
     private int PersonId;
@@ -19,14 +19,18 @@ public class Person extends BaseBO implements Comparable{
     private String DisplayFirstName;
     // IsDeleted
     private Boolean IsDeleted;
-    // Gender
-    private String Gender;
+    // Gender using transient means it won't show up if deserialized
+    private transient String Gender;
     // CreateDate
     private Date CreateDate;
     // List of Email Objects
     private List<Email> Emails;
     //LIst of Vehicles
     private List<Vehicle> Vehicles;
+
+    //needed if you are going to transfer the data to a new app or system
+    //if you don't declare this the system will create one automatically when you serialize
+    private static final long serialVersionUID = 574473748;
     //endregion
 
     //region Constructors
@@ -138,6 +142,14 @@ public class Person extends BaseBO implements Comparable{
         }
     }
 
+    //Outputs the properties of the class to a string
+    public String ToString() {
+        //PersonId, FirstName, LastName, DisplayFirstName, IsDeleted, Gender, CreateDate
+        return "PersonId: " + this.PersonId + " FirstName: " + this.FirstName + " LastName: " + this.LastName +
+        " DisplayFirstName: " + this.DisplayFirstName + " IsDeleted: " + this.IsDeleted + " Gender: " + this.Gender
+                + " CreateDate: " + this.CreateDate;
+    }
+    /*
     @Override
     public int compareTo(Object Person1) {
         Person Person2 = (Person) Person1;
@@ -150,5 +162,6 @@ public class Person extends BaseBO implements Comparable{
             return 0;
         }
     }
+     */
     //endregion
 }

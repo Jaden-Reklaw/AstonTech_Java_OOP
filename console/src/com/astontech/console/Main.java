@@ -14,6 +14,7 @@ import mysql.PersonDAOImpl;
 import mysql.PhoneDAOImpl;
 import org.apache.log4j.Logger;
 
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.*;
@@ -114,7 +115,50 @@ public class Main {
         //LessonReflectionAndGenerics(Employee.class);
         //LessonReflectionAndGenerics(Person.class);
 
-        LessonBoxUnboxCast();
+        //LessonBoxUnboxCast();
+
+        LessonSerialization();
+        LessonDeserialization();
+    }
+
+    private static void LessonDeserialization() {
+        Person person = null; //object to fill after getting object from file
+
+        try {
+            FileInputStream fileIn = new FileInputStream("./newfile.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            //Use casting to tell the progam what kind of object it is receiving
+            person = (Person) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        System.out.println("Person Object deserialized from file: newtext.txt");
+        System.out.println("Deserialized Object" + person.ToString());
+    }
+
+    private static void LessonSerialization() {
+        // get an object from db
+        PersonDAO personDAO = new PersonDAOImpl();
+        Person person = personDAO.getPersonById(1);
+
+        // serialize to a text file
+        try {
+            FileOutputStream fileOut = new FileOutputStream("./newfile.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(person);
+            out.close();
+            fileOut.close();
+            System.out.println("Person Object serialized and written to file: newfile.txt");
+            System.out.println("Serialized Object: " + person.ToString());
+        } catch(IOException ioEx) {
+            System.out.println(ioEx);
+        }
     }
 
     private static void LessonBoxUnboxCast() {
@@ -446,6 +490,7 @@ public class Main {
         }
     }
 
+    /*
     public static void LessonComparable() {
         Person p1 = new Person(7, "Bob");
         Person p2 = new Person(5, "Linda");
@@ -461,6 +506,7 @@ public class Main {
             System.out.println(p1.getFirstName() + " are equals " + p2.getFirstName());
         }
     }
+     */
 
     private static void LessonLogging() {
         //levels of logging
