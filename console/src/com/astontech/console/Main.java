@@ -14,6 +14,8 @@ import mysql.PersonDAOImpl;
 import mysql.PhoneDAOImpl;
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -107,8 +109,58 @@ public class Main {
 
         //LessonDAODelete();
 
-        EmployeeDAOInsertUpdateDelete();
+        //EmployeeDAOInsertUpdateDelete();
+
+        //LessonReflectionAndGenerics(Employee.class);
+        //LessonReflectionAndGenerics(Person.class);
+
+        LessonBoxUnboxCast();
     }
+
+    private static void LessonBoxUnboxCast() {
+        // Boxing is the act of converting a value type into a reference type
+        // Unboxing is the act of converting a reference type into a value type
+
+        // Example Boxing
+        int x = 10;
+        Object o = x;
+        //System.out.println(o + o); //since o is an object you can't uses the + operator
+        //LessonReflectionAndGenerics(o.getClass());
+
+        // Example Unboxing (this is casting, explicit casting)
+        int y = (int) o;
+        System.out.println(y);
+
+        // Example Implicit casting you can go from smaller data type to a bigger data type
+        //But not the other way around unless you use explicit casting
+        int i = 100;
+        double d = i;
+        System.out.println(d);
+
+        // Example of tryin to cast a bigger data type into a smaller data type
+        double a = 1.92;
+        //int b = a; //gets and error
+        //need to be explicit
+        int b = (int) a;
+        System.out.println(b);
+    }
+
+    //Create reflection of an object to see it structure of the class is made up
+    private static <T> void LessonReflectionAndGenerics(Class<T> genericClass) {
+
+        System.out.println("Full Name: " + genericClass.getName());
+        System.out.println("Simple Name: " + genericClass.getSimpleName());
+
+        //Get all the fields from class
+        for(Field field: genericClass.getDeclaredFields()) {
+            System.out.println("Field: " + field.getName() + " - Type: " + field.getType());
+        }
+        //Get all the methods from class
+        for(Method method: genericClass.getDeclaredMethods()) {
+            System.out.println("Method: " + method.getName());
+        }
+    }
+
     private static void EmployeeDAOInsertUpdateDelete() {
         /*
         //region Insert
