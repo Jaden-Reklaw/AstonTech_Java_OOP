@@ -1,6 +1,5 @@
 package com.astontech.dao;
 import com.astontech.bo.Person;
-
 import java.util.List;
 
 public interface PersonDAO {

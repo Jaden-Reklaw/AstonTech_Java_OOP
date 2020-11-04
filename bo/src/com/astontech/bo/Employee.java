@@ -5,6 +5,8 @@ import java.util.Date;
 public class Employee extends Person{
     //Parameters
     private int EmployeeId;
+    private String Email;
+    private Date DOB;
     private Date HireDate;
     private Date TermDate;
 
@@ -20,7 +22,7 @@ public class Employee extends Person{
         this.setLastName(lastName);
     }
 
-    //Setters and Getters
+    //region Setters and Getters
     public int getEmployeeId() {
         return EmployeeId;
     }
@@ -44,4 +46,21 @@ public class Employee extends Person{
     public void setTermDate(Date termDate) {
         TermDate = termDate;
     }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public Date getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(Date DOB) {
+        this.DOB = DOB;
+    }
+    //endregion
 }

@@ -2,12 +2,16 @@ package com.astontech.console;
 
 //import dependencies file -> project structure -> Dependency Tab
 import com.astontech.bo.*;
+import com.astontech.dao.EmployeeDAO;
 import com.astontech.dao.PersonDAO;
+import com.astontech.dao.PhoneDAO;
 import common.helpers.MathHelper;
 import common.helpers.StringHelper;
 import interfaces.*;
 import interfaces.Test;
+import mysql.EmployeeDAOImpl;
 import mysql.PersonDAOImpl;
+import mysql.PhoneDAOImpl;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -91,7 +95,45 @@ public class Main {
 
         //LessonDAO();
 
-        PostgreSQLExecQuery();
+        //TestEmployeeDAO();
+
+        //TestPhoneDAO();
+
+        //PostgreSQLExecQuery();
+
+        //LessonDAOInsert();
+
+        LessonDAOUpdate();
+    }
+
+    private static void LessonDAOUpdate() {
+        //Create instance of Person Data Access Object
+        PersonDAO personDAO = new PersonDAOImpl();
+
+        Person person = personDAO.getPersonById(7);
+        person.setFirstName("Teddy");
+        person.setIsDeleted(true);
+
+        if(personDAO.updatePerson(person)) {
+            System.out.println("Person Update Success!");
+        } else {
+            System.out.println("Person Update Fail!");
+        }
+    }
+
+    private static void LessonDAOInsert() {
+        Person person = new Person();
+        person.setTitle("Mr.");
+        person.setFirstName("Calvin");
+        person.setLastName("Fischoeder");
+        person.setDisplayFirstName("Big Boss Man");
+        person.setCreateDate(new Date());
+        person.setGender("M");
+
+        PersonDAO personDAO = new PersonDAOImpl();//??? what is this
+        int id = personDAO.insertPerson(person);
+
+        System.out.println("New Person Record Inserted. ID: " + id );
     }
 
     private static Connection PostrgreSQLConnection() {
@@ -146,6 +188,28 @@ public class Main {
         } catch (SQLException ex) {
             logger.error(ex);
         }
+    }
+
+    private static void TestPhoneDAO() {
+        PhoneDAO phoneDAO = new PhoneDAOImpl();
+        List<Phone> phoneList = phoneDAO.getPhoneList();
+
+        System.out.println("===============================");
+        for(Phone phone: phoneList) {
+            System.out.println(phone.getPhoneId() + ": " + phone.getAreaCode() + " " + phone.getPhoneNumber());
+        }
+        System.out.println("===============================");
+    }
+
+    private static void TestEmployeeDAO() {
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        List<Employee> employeeList = employeeDAO.getEmployeeList();
+
+        System.out.println("===============================");
+        for(Employee employee: employeeList) {
+            System.out.println(employee.getEmployeeId() + ": " + employee.getEmail() + " " + employee.getDOB());
+        }
+        System.out.println("===============================");
     }
 
     private static void LessonDAO() {

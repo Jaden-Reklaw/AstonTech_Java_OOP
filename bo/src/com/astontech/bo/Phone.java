@@ -3,16 +3,15 @@ package com.astontech.bo;
 public class Phone extends BaseBO{
     //Params
     private int PhoneId;
-    private String AreaCode;
-    private String PhoneNumber;
-    private String PhoneNumberPost;
+    private int AreaCode;
+    private int PhoneNumber;
     private int PersonId;
     private int EntityTypeId;
     private int ClientId;
 
     //Constructors
     public Phone() {}
-    public Phone(String areaCode, String phoneNumber) {
+    public Phone(int areaCode, int phoneNumber) {
         this.setAreaCode(areaCode);
         this.setPhoneNumber(phoneNumber);
     }
@@ -26,28 +25,20 @@ public class Phone extends BaseBO{
         PhoneId = phoneId;
     }
 
-    public String getAreaCode() {
+    public int getAreaCode() {
         return AreaCode;
     }
 
-    public void setAreaCode(String areaCode) {
+    public void setAreaCode(int areaCode) {
         AreaCode = areaCode;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return PhoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         PhoneNumber = phoneNumber;
-    }
-
-    public String getPhoneNumberPost() {
-        return PhoneNumberPost;
-    }
-
-    public void setPhoneNumberPost(String phoneNumberPost) {
-        PhoneNumberPost = phoneNumberPost;
     }
 
     public int getPersonId() {
